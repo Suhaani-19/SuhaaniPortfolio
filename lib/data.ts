@@ -16,7 +16,7 @@ export const profile = {
   tagline:
     "I build systems that reason, retrieve, and act — not just apps that render.",
   summary:
-    "Second-year Computer Science & AI student building multi-agent systems, RAG pipelines, and full-stack products end to end. 300+ LeetCode problems solved. Currently chasing AI/ML internships.",
+    "Second-year Computer Science & AI student building multi-agent systems, RAG pipelines, and full-stack products end to end. 400+ LeetCode problems solved. Currently chasing AI/ML internships.",
   email: "suhaani.garg2024@nst.rishihood.edu.in",
   phone: "+91 93043 76749",
   github: "https://github.com/Suhaani-19",
