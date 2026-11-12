@@ -1,4 +1,5 @@
 import { certifications } from "@/lib/data";
+import Reveal from "./Reveal";
 
 export default function Certifications() {
   return (
@@ -10,14 +11,15 @@ export default function Certifications() {
         Credentials, logged
       </h2>
 
-      <div className="mt-10 divide-y divide-white/10 rounded-xl border border-white/10 bg-surface/40">
+      <Reveal className="mt-10">
+      <div className="divide-y divide-line/10 rounded-xl border border-line/10 bg-surface/40">
         {certifications.map((c) => (
           <a
             key={c.name}
             href={c.link}
             target="_blank"
             rel="noreferrer"
-            className="flex flex-col gap-2 p-5 transition-colors hover:bg-white/[0.03] sm:flex-row sm:items-center sm:justify-between"
+            className="flex flex-col gap-2 p-5 transition-colors hover:bg-line/[0.04] sm:flex-row sm:items-center sm:justify-between"
           >
             <div>
               <p className="font-display text-base font-medium text-ink">
@@ -34,6 +36,7 @@ export default function Certifications() {
           </a>
         ))}
       </div>
+      </Reveal>
     </section>
   );
 }

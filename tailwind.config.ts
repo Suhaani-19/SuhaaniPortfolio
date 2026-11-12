@@ -8,14 +8,16 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        base: "#0D1117",
-        surface: "#151B2C",
-        surface2: "#1C2438",
-        ink: "#E6E8F0",
-        muted: "#8891A7",
-        violet: "#8B7FFF",
-        amber: "#FFB454",
-        mint: "#5EEAD4",
+        base: "rgb(var(--base) / <alpha-value>)",
+        surface: "rgb(var(--surface) / <alpha-value>)",
+        surface2: "rgb(var(--surface2) / <alpha-value>)",
+        ink: "rgb(var(--ink) / <alpha-value>)",
+        muted: "rgb(var(--muted) / <alpha-value>)",
+        line: "rgb(var(--line) / <alpha-value>)",
+        violet: "rgb(var(--violet) / <alpha-value>)",
+        amber: "rgb(var(--amber) / <alpha-value>)",
+        mint: "rgb(var(--mint) / <alpha-value>)",
+        onaccent: "rgb(var(--onaccent) / <alpha-value>)",
       },
       fontFamily: {
         display: ["var(--font-space-grotesk)", "sans-serif"],
@@ -24,7 +26,7 @@ const config: Config = {
       },
       backgroundImage: {
         "grid-fade":
-          "linear-gradient(180deg, rgba(139,127,255,0.08) 0%, rgba(13,17,23,0) 60%)",
+          "linear-gradient(180deg, rgb(var(--violet) / 0.10) 0%, rgb(var(--base) / 0) 60%)",
       },
       keyframes: {
         "pulse-line": {
@@ -35,6 +37,14 @@ const config: Config = {
           "0%": { opacity: "0", transform: "translateY(12px)" },
           "100%": { opacity: "1", transform: "translateY(0)" },
         },
+        float: {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-8px)" },
+        },
+        marquee: {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-50%)" },
+        },
         blink: {
           "0%, 49%": { opacity: "1" },
           "50%, 100%": { opacity: "0" },
@@ -43,6 +53,8 @@ const config: Config = {
       animation: {
         "fade-up": "fade-up 0.6s ease-out forwards",
         blink: "blink 1s step-end infinite",
+        float: "float 6s ease-in-out infinite",
+        marquee: "marquee 30s linear infinite",
       },
     },
   },

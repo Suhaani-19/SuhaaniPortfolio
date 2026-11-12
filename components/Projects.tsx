@@ -1,5 +1,6 @@
 import { projects } from "@/lib/data";
 import ProjectCard from "./ProjectCard";
+import Reveal from "./Reveal";
 
 export default function Projects() {
   return (
@@ -15,8 +16,10 @@ export default function Projects() {
       </p>
 
       <div className="mt-10 grid gap-6 md:grid-cols-2">
-        {projects.map((p) => (
-          <ProjectCard key={p.slug} project={p} />
+        {projects.map((p, i) => (
+          <Reveal key={p.slug} delay={(i % 2) * 0.1}>
+            <ProjectCard project={p} />
+          </Reveal>
         ))}
       </div>
     </section>

@@ -1,8 +1,10 @@
 import { profile } from "@/lib/data";
+import Reveal from "./Reveal";
 
 export default function About() {
   return (
     <section id="about" className="mx-auto max-w-6xl px-6 py-20">
+      <Reveal>
       <div className="grid gap-10 md:grid-cols-[1fr_1.4fr]">
         <div>
           <p className="font-mono text-xs uppercase tracking-widest text-mint">
@@ -20,7 +22,7 @@ export default function About() {
             {profile.education.map((edu) => (
               <div
                 key={edu.degree}
-                className="rounded-lg border border-white/10 bg-surface/50 p-4"
+                className="rounded-lg border border-line/10 bg-surface/50 p-4 transition-colors hover:border-violet/40"
               >
                 <p className="font-mono text-xs text-amber">{edu.period}</p>
                 <p className="mt-1 font-display text-sm font-medium text-ink">
@@ -33,6 +35,7 @@ export default function About() {
           </div>
         </div>
       </div>
+      </Reveal>
     </section>
   );
 }

@@ -1,8 +1,9 @@
 import type { Project } from "@/lib/data";
+import SpotlightCard from "./SpotlightCard";
 
 export default function ProjectCard({ project }: { project: Project }) {
   return (
-    <article className="group relative flex flex-col rounded-xl border border-white/10 bg-surface/50 p-6 transition-colors hover:border-violet/40">
+    <SpotlightCard className="group flex h-full flex-col rounded-xl border border-line/10 bg-surface/50 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-violet/40 hover:shadow-xl hover:shadow-violet/10">
       <div className="flex items-start justify-between gap-4">
         <div>
           <p className="font-mono text-xs text-muted">{project.date}</p>
@@ -26,7 +27,7 @@ export default function ProjectCard({ project }: { project: Project }) {
         {project.stack.map((s) => (
           <span
             key={s}
-            className="rounded-full border border-white/10 px-2.5 py-1 font-mono text-[11px] text-mint"
+            className="rounded-full border border-line/10 px-2.5 py-1 font-mono text-[11px] text-mint"
           >
             {s}
           </span>
@@ -51,6 +52,6 @@ export default function ProjectCard({ project }: { project: Project }) {
           Live demo ↗
         </a>
       </div>
-    </article>
+    </SpotlightCard>
   );
 }
