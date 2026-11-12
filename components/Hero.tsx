@@ -5,17 +5,6 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { profile } from "../lib/data";
 
-const nodes = [
-  { id: "input", label: "resume.pdf" },
-  { id: "research", label: "Researcher" },
-  { id: "analyze", label: "Analyst" },
-  { id: "write", label: "Writer" },
-  { id: "output", label: "portfolio.tsx" },
-];
-
-const NODE_X = [40, 220, 400, 580, 760];
-const NODE_Y = 40;
-
 function TypedLine({ text, delay }: { text: string; delay: number }) {
   const [shown, setShown] = useState("");
 
@@ -45,68 +34,6 @@ export default function Hero() {
       <div className="pointer-events-none absolute -right-16 bottom-10 h-80 w-80 rounded-full bg-amber/10 blur-3xl animate-float [animation-delay:-3s]" />
 
       <div className="mx-auto w-full max-w-6xl">
-        {/* Pipeline diagram */}
-        <div className="mb-10 w-full overflow-x-auto">
-          <svg
-            viewBox="0 0 820 90"
-            className="w-full min-w-[700px]"
-            aria-hidden="true"
-          >
-            {NODE_X.slice(0, -1).map((x, i) => (
-              <motion.line
-                key={i}
-                x1={x + 24}
-                y1={NODE_Y}
-                x2={NODE_X[i + 1] - 24}
-                y2={NODE_Y}
-                className="stroke-violet"
-                strokeWidth="1.5"
-                strokeDasharray="4 4"
-                initial={{ pathLength: 0, opacity: 0 }}
-                animate={{ pathLength: 1, opacity: 0.6 }}
-                transition={{ duration: 0.5, delay: 0.3 + i * 0.35 }}
-              />
-            ))}
-            {nodes.map((n, i) => (
-              <g key={n.id}>
-                <motion.circle
-                  cx={NODE_X[i]}
-                  cy={NODE_Y}
-                  r={i === 0 || i === nodes.length - 1 ? 16 : 20}
-                  className={`fill-surface ${
-                    i === nodes.length - 1 ? "stroke-amber" : "stroke-violet"
-                  }`}
-                  strokeWidth="1.5"
-                  initial={{ scale: 0, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 1 }}
-                  transition={{ duration: 0.4, delay: i * 0.35 }}
-                />
-                <motion.circle
-                  cx={NODE_X[i]}
-                  cy={NODE_Y}
-                  r="3"
-                  className={i === nodes.length - 1 ? "fill-amber" : "fill-mint"}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: [0, 1, 0.4] }}
-                  transition={{ duration: 1.2, delay: i * 0.35 + 0.3, repeat: Infinity, repeatDelay: 1.5 }}
-                />
-                <motion.text
-                  x={NODE_X[i]}
-                  y={NODE_Y + 38}
-                  textAnchor="middle"
-                  className="fill-muted font-mono"
-                  fontSize="11"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 0.4, delay: i * 0.35 + 0.15 }}
-                >
-                  {n.label}
-                </motion.text>
-              </g>
-            ))}
-          </svg>
-        </div>
-
         <div className="grid items-center gap-10 lg:grid-cols-[1.35fr_1fr]">
           {/* Terminal output block */}
           <div className="rounded-xl border border-line/10 bg-surface/60 p-6 font-mono text-sm shadow-2xl shadow-violet/5 backdrop-blur-sm sm:p-8">
