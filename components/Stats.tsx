@@ -29,7 +29,7 @@ function StatCard({
   sub?: string;
 }) {
   return (
-    <div className="rounded-xl border border-white/10 bg-surface/40 p-5">
+    <div className="rounded-xl border border-line/10 bg-surface/40 p-5">
       <p className="font-mono text-xs uppercase tracking-wider text-muted">
         {label}
       </p>

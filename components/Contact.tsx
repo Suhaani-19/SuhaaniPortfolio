@@ -87,7 +87,7 @@ export default function Contact() {
               type="text"
               required
               maxLength={120}
-              className="w-full rounded-lg border border-white/10 bg-surface/60 px-4 py-2.5 text-ink outline-none transition-colors focus:border-violet"
+              className="w-full rounded-lg border border-line/10 bg-surface/60 px-4 py-2.5 text-ink outline-none transition-colors focus:border-violet"
             />
           </div>
           <div>
@@ -100,7 +100,7 @@ export default function Contact() {
               type="email"
               required
               maxLength={200}
-              className="w-full rounded-lg border border-white/10 bg-surface/60 px-4 py-2.5 text-ink outline-none transition-colors focus:border-violet"
+              className="w-full rounded-lg border border-line/10 bg-surface/60 px-4 py-2.5 text-ink outline-none transition-colors focus:border-violet"
             />
           </div>
           <div>
@@ -116,14 +116,14 @@ export default function Contact() {
               required
               rows={5}
               maxLength={5000}
-              className="w-full resize-none rounded-lg border border-white/10 bg-surface/60 px-4 py-2.5 text-ink outline-none transition-colors focus:border-violet"
+              className="w-full resize-none rounded-lg border border-line/10 bg-surface/60 px-4 py-2.5 text-ink outline-none transition-colors focus:border-violet"
             />
           </div>
 
           <button
             type="submit"
             disabled={status === "loading"}
-            className="rounded-full bg-violet px-6 py-2.5 font-body text-sm font-medium text-base transition-transform hover:-translate-y-0.5 disabled:opacity-60 disabled:hover:translate-y-0"
+            className="rounded-full bg-violet px-6 py-2.5 font-body text-sm font-medium text-onaccent transition-transform hover:-translate-y-0.5 disabled:opacity-60 disabled:hover:translate-y-0"
           >
             {status === "loading" ? "Sending…" : "Send message"}
           </button>

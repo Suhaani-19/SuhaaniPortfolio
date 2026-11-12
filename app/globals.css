@@ -2,9 +2,39 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ---------- Theme tokens (RGB channels so Tailwind opacity works) ---------- */
+:root,
+html[data-theme="dark"] {
+  --base: 13 17 23;
+  --surface: 21 27 44;
+  --surface2: 28 36 56;
+  --ink: 230 232 240;
+  --muted: 136 145 167;
+  --line: 255 255 255;
+  --violet: 139 127 255;
+  --amber: 255 180 84;
+  --mint: 94 234 212;
+  --onaccent: 13 17 23;
+  color-scheme: dark;
+}
+
+html[data-theme="light"] {
+  --base: 247 247 251;
+  --surface: 255 255 255;
+  --surface2: 238 240 248;
+  --ink: 22 26 41;
+  --muted: 98 106 128;
+  --line: 22 26 41;
+  --violet: 99 82 240;
+  --amber: 201 110 8;
+  --mint: 13 133 120;
+  --onaccent: 255 255 255;
+  color-scheme: light;
+}
+
 ::selection {
-  background: #8b7fff;
-  color: #0d1117;
+  background: rgb(var(--violet));
+  color: rgb(var(--onaccent));
 }
 
 html {
@@ -12,26 +42,27 @@ html {
 }
 
 body {
-  background-color: #0d1117;
-  color: #e6e8f0;
+  background-color: rgb(var(--base));
+  color: rgb(var(--ink));
+  transition: background-color 0.35s ease, color 0.35s ease;
 }
 
 ::-webkit-scrollbar {
   width: 10px;
 }
 ::-webkit-scrollbar-track {
-  background: #0d1117;
+  background: rgb(var(--base));
 }
 ::-webkit-scrollbar-thumb {
-  background: #1c2438;
+  background: rgb(var(--surface2));
   border-radius: 8px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #8b7fff;
+  background: rgb(var(--violet));
 }
 
 .text-gradient {
-  background: linear-gradient(90deg, #8b7fff 0%, #ffb454 100%);
+  background: linear-gradient(90deg, rgb(var(--violet)) 0%, rgb(var(--amber)) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -46,9 +77,34 @@ body {
   z-index: 1;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
+html[data-theme="light"] .noise::before {
+  opacity: 0.02;
+}
+
+/* Soft cursor-following glow on cards (set via --mx/--my in SpotlightCard) */
+.spotlight {
+  position: relative;
+}
+.spotlight::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  background: radial-gradient(
+    380px circle at var(--mx, 50%) var(--my, 50%),
+    rgb(var(--violet) / 0.14),
+    transparent 60%
+  );
+}
+.spotlight:hover::before {
+  opacity: 1;
+}
 
 :focus-visible {
-  outline: 2px solid #8b7fff;
+  outline: 2px solid rgb(var(--violet));
   outline-offset: 3px;
 }
 
